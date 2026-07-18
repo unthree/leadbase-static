@@ -12,7 +12,7 @@ a page in your own workspace.
 | **Tasks** | Today / Upcoming / Board views, project lanes (each with current status, short-term goal, long-term goal), checkable tasks. |
 | **Video Ideas** | Main Channel / Secondary Channel / Shorts boards. Quick-capture, double-click an idea to add title, script, and description. |
 | **Video Research** | Enter a topic → titles, hook, outline, and thumbnail concepts. |
-| **Channel Pool** | Curated AI-focused YouTube channels (seeded with 17, grouped by category) to pull ideas, trends, and newsletter sources from. Add/remove channels in the UI. |
+| **Channel Pool** | Curated AI-focused YouTube channels (seeded with 29, grouped by category) to pull ideas, trends, and newsletter sources from. Add/remove channels in the UI. |
 | **Sponsorship Finder** | Track sponsor prospects by status; agent suggests new prospects. |
 | **Automations** | Coming soon (scheduled runs, source sync, backups). |
 
