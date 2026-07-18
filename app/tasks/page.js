@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useStore, uid } from "@/lib/useStore";
+import { useStore, uid, StoreStatus } from "@/lib/useStore";
 
 const VIEWS = [
   { id: "today", label: "Today", icon: "⭐" },
@@ -18,7 +18,7 @@ export default function TasksPage() {
   const [newTask, setNewTask] = useState("");
   const [newTaskLane, setNewTaskLane] = useState("");
 
-  if (!state) return <div className="muted">Loading…</div>;
+  if (!state || state.__error) return <StoreStatus state={state} />;
 
   const activeLane = state.lanes.find((l) => l.id === laneId);
 

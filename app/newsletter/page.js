@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useStore, uid, apiFetch } from "@/lib/useStore";
+import { useStore, uid, apiFetch, StoreStatus } from "@/lib/useStore";
 
 const TABS = ["Overview", "Drafts", "Sources", "Runs", "Settings"];
 
@@ -12,7 +12,7 @@ export default function NewsletterPage() {
   const [generating, setGenerating] = useState(false);
   const [openDraft, setOpenDraft] = useState(null);
 
-  if (!state) return <div className="muted">Loading…</div>;
+  if (!state || state.__error) return <StoreStatus state={state} />;
 
   const unused = state.sources.filter((s) => !s.used).length;
   const lastRun = state.runs[0];

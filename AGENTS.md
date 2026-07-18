@@ -31,14 +31,14 @@ short random strings (e.g. 8 lowercase alphanumerics).
 
 ## Examples
 
-Add a task to the HIM lane for today:
+Add a task to the Leadbase Pro lane for today:
 
 ```bash
 KEY=your-mc-api-key
 BASE=https://mission-control-ecru-ten.vercel.app
 
 STATE=$(curl -s -H "x-api-key: $KEY" $BASE/api/state/tasks)
-echo "$STATE" | jq '.tasks += [{"id":"a1b2c3d4","title":"Record intro video","lane":"him","done":false,"due":"today"}]' \
+echo "$STATE" | jq '.tasks += [{"id":"a1b2c3d4","title":"Record intro video","lane":"leadbasepro","done":false,"due":"today"}]' \
   | curl -s -X PUT -H "x-api-key: $KEY" -H "Content-Type: application/json" -d @- $BASE/api/state/tasks
 ```
 
@@ -66,7 +66,7 @@ caller's job via a PUT.
 4. Instructions for the GPT: paste the "Data model" and "golden rule"
    sections above.
 
-Now you can tell ChatGPT "add 'edit the sponsorship deck' to my HIM lane for
+Now you can tell ChatGPT "add 'edit the sponsorship deck' to my Leadbase Pro lane for
 today" from any device, including the ChatGPT mobile/desktop apps.
 
 ## Hooking up phone/iMessage or desktop agents

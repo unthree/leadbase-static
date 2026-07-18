@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useStore, uid, apiFetch } from "@/lib/useStore";
+import { useStore, uid, apiFetch, StoreStatus } from "@/lib/useStore";
 
 export default function VideoResearchPage() {
   const [state, update] = useStore("research");
@@ -9,7 +9,7 @@ export default function VideoResearchPage() {
   const [busy, setBusy] = useState(false);
   const [open, setOpen] = useState(null);
 
-  if (!state) return <div className="muted">Loading…</div>;
+  if (!state || state.__error) return <StoreStatus state={state} />;
 
   const run = async () => {
     if (!topic.trim() || busy) return;

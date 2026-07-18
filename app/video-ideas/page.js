@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useStore, uid } from "@/lib/useStore";
+import { useStore, uid, StoreStatus } from "@/lib/useStore";
 
 export default function VideoIdeasPage() {
   const [state, update] = useStore("ideas");
   const [drafts, setDrafts] = useState({});
   const [editing, setEditing] = useState(null); // idea id being edited
 
-  if (!state) return <div className="muted">Loading…</div>;
+  if (!state || state.__error) return <StoreStatus state={state} />;
 
   const mutateBoard = (boardId, fn) =>
     update({

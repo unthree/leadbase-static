@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useStore, uid, apiFetch } from "@/lib/useStore";
+import { useStore, uid, apiFetch, StoreStatus } from "@/lib/useStore";
 
 const STATUSES = ["prospect", "contacted", "negotiating", "closed", "passed"];
 
@@ -11,7 +11,7 @@ export default function SponsorshipsPage() {
   const [busy, setBusy] = useState(false);
   const [suggestions, setSuggestions] = useState("");
 
-  if (!state) return <div className="muted">Loading…</div>;
+  if (!state || state.__error) return <StoreStatus state={state} />;
 
   const add = () => {
     if (!name.trim()) return;

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { readStore, writeStore } from "@/lib/store";
 import { DEFAULTS, STORE_NAMES } from "@/lib/defaults";
+import { isValidStore } from "@/lib/validate";
 
 export const dynamic = "force-dynamic";
 
@@ -10,7 +11,9 @@ export async function GET(_req, { params }) {
     return NextResponse.json({ error: "unknown store" }, { status: 404 });
   }
   const value = await readStore(name, DEFAULTS[name]);
-  return NextResponse.json(value);
+  // Self-heal: if a bad write ever slipped in, serve defaults instead of
+  // letting a malformed document crash every client.
+  return NextResponse.json(isValidStore(name, value) ? value : DEFAULTS[name]);
 }
 
 export async function PUT(req, { params }) {
@@ -18,7 +21,21 @@ export async function PUT(req, { params }) {
   if (!STORE_NAMES.includes(name)) {
     return NextResponse.json({ error: "unknown store" }, { status: 404 });
   }
-  const value = await req.json();
+  let value;
+  try {
+    value = await req.json();
+  } catch {
+    return NextResponse.json({ error: "body must be JSON" }, { status: 400 });
+  }
+  if (!isValidStore(name, value)) {
+    return NextResponse.json(
+      {
+        error:
+          "invalid document shape — GET the store first, modify the returned JSON, and PUT the ENTIRE document back (never a partial object)"
+      },
+      { status: 400 }
+    );
+  }
   await writeStore(name, value);
   return NextResponse.json({ ok: true });
 }
