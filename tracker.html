@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Tracker</title>
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --ink: #1c1b18;
+    --muted: #6f6a60;
+    --line: #e5e1d8;
+    --accent: #b4552d;
+    --accent-soft: #f6e7de;
+    --done: #2d6a4f;
+    --done-soft: #e3efe9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161513;
+      --card: #201f1c;
+      --ink: #ece9e2;
+      --muted: #a49e92;
+      --line: #35332e;
+      --accent: #e0764a;
+      --accent-soft: #3a2519;
+      --done: #6fbf97;
+      --done-soft: #1e3128;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 24px 12px;
+    line-height: 1.45;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    max-width: 460px;
+    width: 100%;
+    padding: 26px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+  h1 { font-size: 1.25rem; }
+  .date { color: var(--muted); font-size: .85rem; margin-bottom: 16px; }
+  .steps { display: flex; flex-direction: column; }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 4px;
+    border-top: 1px solid var(--line);
+    cursor: pointer;
+    user-select: none;
+    font-size: .95rem;
+  }
+  .step .box {
+    flex: 0 0 22px;
+    height: 22px;
+    border: 2px solid var(--line);
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    color: transparent;
+    transition: all .15s;
+  }
+  .step.done .box { background: var(--done); border-color: var(--done); color: #fff; }
+  .step.done .label { color: var(--muted); text-decoration: line-through; }
+  .summary {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    font-size: .85rem;
+  }
+  .summary b { color: var(--accent); }
+  .week {
+    margin-top: 18px;
+  }
+  .week h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 8px; }
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+  .day {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .65rem;
+    color: var(--muted);
+  }
+  .day.full { background: var(--done); color: #fff; }
+  .day.partial { background: var(--done-soft); color: var(--done); }
+  .day.today { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .reset { margin-top: 16px; text-align: right; }
+  .reset button {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: .75rem;
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Morning Tracker</h1>
+  <div class="date" id="date"></div>
+  <div class="steps" id="steps"></div>
+  <div class="summary" id="summary"></div>
+  <div class="week">
+    <h2>Last 7 days</h2>
+    <div class="week-grid" id="week"></div>
+  </div>
+  <div class="reset"><button id="resetBtn">Reset today</button></div>
+</div>
+<script>
+  const STEPS = [
+    "Activate: water + bed, no phone",
+    "P90X workout",
+    "Film a video",
+    "Email block (20 min) — inbox zero",
+    "One revenue action",
+    "Twitter: post first (15 min)",
+    "Read",
+    "Journal + plan tomorrow"
+  ];
+  // The three scoreboard steps, by index in STEPS
+  const SCORE = { video: 2, email: 3, revenue: 4 };
+  const KEY = "morning-tracker-v1";
+
+  const todayKey = () => new Date().toISOString().slice(0, 10);
+  const load = () => JSON.parse(localStorage.getItem(KEY) || "{}");
+  const save = (d) => localStorage.setItem(KEY, JSON.stringify(d));
+
+  const data = load();
+  if (!data[todayKey()]) data[todayKey()] = STEPS.map(() => false);
+
+  document.getElementById("date").textContent = new Date().toLocaleDateString(undefined,
+    { weekday: "long", month: "long", day: "numeric" });
+
+  function render() {
+    const day = data[todayKey()];
+    const stepsEl = document.getElementById("steps");
+    stepsEl.innerHTML = "";
+    STEPS.forEach((label, i) => {
+      const el = document.createElement("div");
+      el.className = "step" + (day[i] ? " done" : "");
+      el.innerHTML = `<span class="box">&#10003;</span><span class="label">${label}</span>`;
+      el.onclick = () => { day[i] = !day[i]; save(data); render(); };
+      stepsEl.appendChild(el);
+    });
+
+    // Weekly scoreboard: count last 7 days including today
+    const last7 = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(); d.setDate(d.getDate() - i);
+      last7.push(d.toISOString().slice(0, 10));
+    }
+    const count = (idx) => last7.filter(k => data[k] && data[k][idx]).length;
+    document.getElementById("summary").innerHTML =
+      `<b>This week:</b> ${count(SCORE.video)}/7 videos &middot; ` +
+      `${count(SCORE.email)}/7 inbox-zero mornings &middot; ` +
+      `${count(SCORE.revenue)}/7 revenue actions`;
+
+    const weekEl = document.getElementById("week");
+    weekEl.innerHTML = "";
+    last7.forEach(k => {
+      const done = (data[k] || []).filter(Boolean).length;
+      const el = document.createElement("div");
+      el.className = "day" +
+        (done === STEPS.length ? " full" : done > 0 ? " partial" : "") +
+        (k === todayKey() ? " today" : "");
+      el.textContent = new Date(k + "T12:00:00").toLocaleDateString(undefined, { weekday: "narrow" });
+      el.title = `${k}: ${done}/${STEPS.length}`;
+      weekEl.appendChild(el);
+    });
+  }
+
+  document.getElementById("resetBtn").onclick = () => {
+    data[todayKey()] = STEPS.map(() => false);
+    save(data); render();
+  };
+
+  render();
+</script>
+</body>
+</html>

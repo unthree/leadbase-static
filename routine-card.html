@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Routine Card</title>
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --ink: #1c1b18;
+    --muted: #6f6a60;
+    --line: #e5e1d8;
+    --accent: #b4552d;
+    --accent-soft: #f6e7de;
+    --goal: #2d6a4f;
+    --goal-soft: #e3efe9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161513;
+      --card: #201f1c;
+      --ink: #ece9e2;
+      --muted: #a49e92;
+      --line: #35332e;
+      --accent: #e0764a;
+      --accent-soft: #3a2519;
+      --goal: #6fbf97;
+      --goal-soft: #1e3128;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.45;
+    display: flex;
+    justify-content: center;
+    padding: 24px 12px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    max-width: 460px;
+    width: 100%;
+    padding: 28px 26px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+  header h1 {
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+  }
+  header p {
+    color: var(--muted);
+    font-size: .85rem;
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+  ol { list-style: none; counter-reset: step; }
+  ol li {
+    counter-increment: step;
+    display: flex;
+    gap: 14px;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+  }
+  ol li::before {
+    content: counter(step);
+    flex: 0 0 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: .8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+  ol li strong { display: block; font-size: .95rem; }
+  ol li span { color: var(--muted); font-size: .8rem; }
+  .tag {
+    display: inline-block;
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--goal);
+    background: var(--goal-soft);
+    border-radius: 99px;
+    padding: 2px 8px;
+    margin-left: 6px;
+    vertical-align: 1px;
+  }
+  .rules {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    font-size: .82rem;
+  }
+  .rules b { color: var(--accent); }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .card { box-shadow: none; border: none; max-width: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <header>
+      <h1>Morning Routine</h1>
+      <p>Create before you consume. Every goal owns a slot.</p>
+    </header>
+    <ol>
+      <li><div><strong>Activate</strong><span>Wake up &middot; drink water &middot; make bed — one block, no phone</span></div></li>
+      <li><div><strong>P90X workout</strong><span>Energy generator — keep it early</span></div></li>
+      <li><div><strong>Film a video <span class="tag">content</span></strong><span>Peak energy, zero inputs. Topic was decided last night.</span></div></li>
+      <li><div><strong>Email block — 20 min, timer on <span class="tag">email</span></strong><span>Reply under 2 min &middot; archive &middot; or defer to task list. Inbox zero.</span></div></li>
+      <li><div><strong>One revenue action <span class="tag">revenue</span></strong><span>Follow up a lead, send a pitch, publish an offer — one per day</span></div></li>
+      <li><div><strong>Twitter — post first, 15 min, timer on</strong><span>Post a clip from today&rsquo;s video, reply to comments, out</span></div></li>
+      <li><div><strong>Read</strong><span>Feeds tomorrow&rsquo;s video ideas</span></div></li>
+      <li><div><strong>Journal + plan</strong><span>Write tomorrow&rsquo;s video topic and revenue action — pre-decide</span></div></li>
+    </ol>
+    <div class="rules">
+      <b>Weekly scoreboard:</b> videos filmed &middot; inbox-zero mornings &middot; revenue actions taken.
+      If a number stalls, fix that slot — don&rsquo;t overhaul the routine.
+    </div>
+  </div>
+</body>
+</html>

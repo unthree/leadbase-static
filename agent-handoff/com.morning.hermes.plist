@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.morning.hermes</string>
+
+	<!-- Edit the script path and message rendering to taste. This simple
+	     version sends the static template; a desktop agent can replace the
+	     ProgramArguments with its own renderer that fills in the date and
+	     yesterday's scoreboard before calling osascript. -->
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/sh</string>
+		<string>-c</string>
+		<string>osascript "$HOME/Scripts/send-imessage.applescript" "$(cat "$HOME/Scripts/daily-message-template.md")"</string>
+	</array>
+
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>6</integer>
+		<key>Minute</key>
+		<integer>30</integer>
+	</dict>
+
+	<key>StandardErrorPath</key>
+	<string>/tmp/com.morning.hermes.err</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/com.morning.hermes.out</string>
+</dict>
+</plist>
