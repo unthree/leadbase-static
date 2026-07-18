@@ -7,6 +7,7 @@ Contract for one iteration. The agent runs stages in order and does not skip ver
 
 ## Stage 0 — SYNC
 
+- **Pause check**: if `factory/PAUSED` exists in the factory repo, stop immediately and report "factory paused" — nothing else runs.
 - Fresh checkout of `leadbasepro` `main`.
 - Read `factory/BACKLOG.md` and the last 3 entries of `factory/JOURNAL.md`.
 - Pick the **topmost unchecked item** that isn't marked `blocked:`. If it depends on an unmerged PR, take the next one.

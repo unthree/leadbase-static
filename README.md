@@ -26,6 +26,9 @@ One item per iteration. The backlog is the queue, the journal is the memory, PRs
 | `factory/BACKLOG.md` | Prioritized work queue for LeadbasePro |
 | `factory/JOURNAL.md` | Append-only log of every iteration |
 | `factory/prompts/run-loop.md` | The master prompt — paste into Codex or Claude to run one full iteration |
+| `factory/CONTROL.md` | Remote-control protocol — how any GitHub-credentialed agent steers the factory |
+| `factory/prompts/control-agent.md` | Standing instructions for a controller agent (ChatGPT/Hermes/phone) |
+| `factory/PAUSED` | Kill switch — if this file exists, runs exit immediately (create to pause, delete to resume) |
 
 ## Running it
 
@@ -34,3 +37,12 @@ One item per iteration. The backlog is the queue, the journal is the memory, PRs
 **Claude Code:** open a session with both repos and say "run one factory iteration" with `factory/prompts/run-loop.md` as the instruction, or wire it to a recurring Routine so iterations run on a schedule.
 
 **Any agent:** the loop is plain markdown — no tooling lock-in. If the agent can clone, branch, run `npm run lint && npm run build`, and open a PR, it can run the factory.
+
+## Remote control (ChatGPT / Hermes / phone)
+
+The factory is steered entirely through GitHub, so any agent with a repo-scoped token is a
+full controller — including chat-only agents that can't write code. Give the agent a
+fine-grained PAT for the two repos and `factory/prompts/control-agent.md` as instructions,
+and it can report status, queue and reorder work, unblock decisions, pause/resume the
+factory, and merge `factory: *` PRs — from a desktop app or a text-message conversation.
+Details and safety rails: `factory/CONTROL.md`.
