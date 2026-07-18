@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useStore, uid } from "@/lib/useStore";
+import { useStore, uid, apiFetch } from "@/lib/useStore";
 
 const TABS = ["Overview", "Drafts", "Sources", "Runs", "Settings"];
 
@@ -32,7 +32,7 @@ export default function NewsletterPage() {
       .filter((s) => !s.used)
       .map((s) => `- ${s.url}`)
       .join("\n");
-    const res = await fetch("/api/generate", {
+    const res = await apiFetch("/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

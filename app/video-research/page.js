@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useStore, uid } from "@/lib/useStore";
+import { useStore, uid, apiFetch } from "@/lib/useStore";
 
 export default function VideoResearchPage() {
   const [state, update] = useStore("research");
@@ -14,7 +14,7 @@ export default function VideoResearchPage() {
   const run = async () => {
     if (!topic.trim() || busy) return;
     setBusy(true);
-    const res = await fetch("/api/generate", {
+    const res = await apiFetch("/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ kind: "research", input: topic.trim() })

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useStore, uid } from "@/lib/useStore";
+import { useStore, uid, apiFetch } from "@/lib/useStore";
 
 const STATUSES = ["prospect", "contacted", "negotiating", "closed", "passed"];
 
@@ -30,7 +30,7 @@ export default function SponsorshipsPage() {
 
   const suggest = async () => {
     setBusy(true);
-    const res = await fetch("/api/generate", {
+    const res = await apiFetch("/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
