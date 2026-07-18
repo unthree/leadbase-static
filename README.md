@@ -40,16 +40,22 @@ Set `OPENAI_MODEL` / `HERMES_MODEL` to the **exact model ids your provider expos
 If your provider serves models under different names, just change the two env vars —
 no code changes needed.
 
-## Deploy to Vercel (use it from your phone, anywhere)
+## Deploy to Vercel (use it from your phone, iPad, anywhere)
 
-```bash
-npx vercel
-```
+1. Go to [vercel.com/new](https://vercel.com/new) and **Import** this GitHub repo.
+2. Under **Settings → Git**, set the production branch to the branch you use.
+3. Add a free database so your data persists: project → **Storage** tab →
+   **Create Database → Upstash Redis** (free tier). Vercel injects
+   `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` automatically and
+   the app switches from local JSON files to Redis on its own.
+4. Add your AI keys under **Settings → Environment Variables**
+   (`OPENAI_API_KEY`, `OPENAI_MODEL`, `HERMES_MODEL`, …), then **Deploy**.
+5. Open the `*.vercel.app` URL from any device. On iPhone/iPad, use
+   Share → **Add to Home Screen** to make it feel like an app.
 
-Note: Vercel's filesystem is ephemeral, so the JSON file store resets between
-deployments there. For a persistent hosted version, swap `lib/store.js` for
-Vercel KV / Postgres / Turso (it's one file — `readStore`/`writeStore`).
-For purely local use on your Mac, the JSON store is perfect.
+On your Mac (local `npm run dev`), the Upstash vars stay empty and everything
+still saves to plain JSON files in `data/` as before. Note the two copies are
+independent — local data and Vercel data don't sync to each other.
 
 ## Backups — never lose this to a hard-drive crash
 
