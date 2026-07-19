@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { readStore, writeStore } from "@/lib/store";
+import { readStore, writeStore, StorageError } from "@/lib/store";
 import { DEFAULTS, STORE_NAMES } from "@/lib/defaults";
 import { isValidStore } from "@/lib/validate";
 
@@ -36,6 +36,20 @@ export async function PUT(req, { params }) {
       { status: 400 }
     );
   }
-  await writeStore(name, value);
+  try {
+    await writeStore(name, value);
+  } catch (err) {
+    console.error(`PUT /api/state/${name} failed:`, err);
+    if (err instanceof StorageError) {
+      return NextResponse.json(
+        { error: err.message, hint: err.hint },
+        { status: 503 }
+      );
+    }
+    return NextResponse.json(
+      { error: `write failed: ${err.message}` },
+      { status: 500 }
+    );
+  }
   return NextResponse.json({ ok: true });
 }
