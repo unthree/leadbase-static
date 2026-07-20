@@ -9,8 +9,19 @@ import { icons, X } from "lucide-react";
 
 export type IconName = keyof typeof icons;
 
-export function Icon({ name, ...rest }: { name: IconName } & React.SVGProps<SVGSVGElement>) {
-  const Cmp = icons[name];
+// Accept both PascalCase lucide keys ("TrendingUp") and the kebab/lowercase
+// names carried in fixtures ("trending-up", "target") — normalize to the key.
+function toPascal(name: string): IconName {
+  if (name in icons) return name as IconName;
+  const pascal = name
+    .split(/[-_\s]/)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join("");
+  return (pascal in icons ? pascal : "Circle") as IconName;
+}
+
+export function Icon({ name, ...rest }: { name: IconName | string } & React.SVGProps<SVGSVGElement>) {
+  const Cmp = icons[toPascal(name)];
   return <Cmp {...rest} />;
 }
 
@@ -201,7 +212,7 @@ export function ScoreBadge({ score, size = "sm", label }: { score: number; size?
 /* ----- Icon chip ----- */
 export type ChipTone = "brand" | "sky" | "violet" | "magenta" | "success" | "warning" | "gradient";
 
-export function IconChip({ tone, icon, size }: { tone: ChipTone; icon: IconName; size?: "sm" | "lg" }) {
+export function IconChip({ tone, icon, size }: { tone: ChipTone; icon: IconName | string; size?: "sm" | "lg" }) {
   return (
     <span className={`lb-icon-chip lb-icon-chip--${tone}${size ? ` lb-icon-chip--${size}` : ""}`}>
       <Icon name={icon} />
