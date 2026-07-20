@@ -323,11 +323,12 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   const tickTasks = useCallback(() => {
     setAgentTasks((ts) =>
-      ts.map((t) =>
-        t.state === "running" && t.pct < 100
-          ? { ...t, pct: Math.min(100, t.pct + 2 + Math.round(Math.random() * 6)) }
-          : t
-      )
+      ts.map((t) => {
+        if (t.state !== "running") return t;
+        const pct = Math.min(100, t.pct + 2 + Math.round(Math.random() * 6));
+        // SPEC §6.1: a running task that reaches 100% becomes Done.
+        return pct >= 100 ? { ...t, pct: 100, state: "done" } : { ...t, pct };
+      })
     );
   }, []);
 
@@ -452,10 +453,11 @@ export function useFeedTicker(enabled: boolean) {
 }
 
 export function useTaskTicker(enabled: boolean) {
-  const { tickTasks } = useAppState();
+  const { tickTasks, profile } = useAppState();
   useEffect(() => {
-    if (!enabled) return;
+    // A paused agent runs nothing (SPEC §3.9.3) — freeze the workbench too.
+    if (!enabled || profile.agentPaused) return;
     const t = setInterval(tickTasks, TASK_TICK_MS);
     return () => clearInterval(t);
-  }, [enabled, tickTasks]);
+  }, [enabled, profile.agentPaused, tickTasks]);
 }
