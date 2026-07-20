@@ -22,7 +22,12 @@ const PROMPTS = {
 };
 
 export async function POST(req) {
-  const { kind, input } = await req.json();
+  let kind, input;
+  try {
+    ({ kind, input } = await req.json());
+  } catch {
+    return NextResponse.json({ error: "body must be JSON" }, { status: 400 });
+  }
   const cfg = PROMPTS[kind];
   if (!cfg) {
     return NextResponse.json({ error: "unknown kind" }, { status: 400 });

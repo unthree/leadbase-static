@@ -10,7 +10,14 @@ export async function GET(_req, { params }) {
   if (!STORE_NAMES.includes(name)) {
     return NextResponse.json({ error: "unknown store" }, { status: 404 });
   }
-  const value = await readStore(name, DEFAULTS[name]);
+  let value;
+  try {
+    value = await readStore(name, DEFAULTS[name]);
+  } catch {
+    // Backend down ≠ empty store. Serving defaults here would let the next
+    // autosave overwrite the real document.
+    return NextResponse.json({ error: "storage backend unavailable" }, { status: 503 });
+  }
   // Self-heal: if a bad write ever slipped in, serve defaults instead of
   // letting a malformed document crash every client.
   return NextResponse.json(isValidStore(name, value) ? value : DEFAULTS[name]);

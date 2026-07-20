@@ -43,28 +43,34 @@ export default function NewsletterPage() {
     const result = await res.json();
     const now = new Date();
     const [subject, ...rest] = (result.text || "").split("\n");
-    const next = {
-      ...state,
-      runs: [
-        { id: uid(), at: now.toISOString(), ok: result.ok, model: result.model },
-        ...state.runs
-      ]
-    };
-    if (result.ok) {
-      next.drafts = [
-        {
-          id: uid(),
-          title: subject.replace(/^Subject:\s*/i, "").trim() || "Untitled draft",
-          body: rest.join("\n").trim(),
-          date: now.toISOString()
-        },
-        ...state.drafts
-      ];
-      next.sources = state.sources.map((s) => ({ ...s, used: true }));
-    } else {
-      alert(result.text);
-    }
-    update(next);
+    // Only the sources that existed when generation started go into the
+    // draft, so only those get marked used.
+    const usedIds = new Set(state.sources.filter((s) => !s.used).map((s) => s.id));
+    if (!result.ok) alert(result.text);
+    // Functional update: merge into the CURRENT document, not the snapshot
+    // from before the (slow) AI call — edits made meanwhile are preserved.
+    update((cur) => {
+      const next = {
+        ...cur,
+        runs: [
+          { id: uid(), at: now.toISOString(), ok: result.ok, model: result.model },
+          ...cur.runs
+        ]
+      };
+      if (result.ok) {
+        next.drafts = [
+          {
+            id: uid(),
+            title: subject.replace(/^Subject:\s*/i, "").trim() || "Untitled draft",
+            body: rest.join("\n").trim(),
+            date: now.toISOString()
+          },
+          ...cur.drafts
+        ];
+        next.sources = cur.sources.map((s) => (usedIds.has(s.id) ? { ...s, used: true } : s));
+      }
+      return next;
+    });
     setGenerating(false);
   };
 
