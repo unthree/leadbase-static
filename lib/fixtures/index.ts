@@ -19,8 +19,8 @@ import type {
 export const profile: Profile = {
   name: "Maya Okoro",
   email: "maya@onboardloop.co",
-  plan: "operator",
-  trialDaysLeft: 9,
+  plan: "studio",
+  trialDaysLeft: null,
   interests: ["Product onboarding", "B2B SaaS", "Local lead-gen", "Real-estate tech"],
   goals: ["Reach $5k MRR across the portfolio", "Ship one new build per month"],
   agentPaused: false,

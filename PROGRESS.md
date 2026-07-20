@@ -4,32 +4,32 @@
 > Legend: `[ ]` not started · `[~]` Codex reports done, awaiting verification · `[x]` verified ✅ (safe to move to Done in Linear) · `[!]` failed verification, fix issued.
 
 ## Phase 0 — Foundation
-- [ ] P0-T1 Scaffold Next.js 14 + TS (App Router)
-- [ ] P0-T2 Wire frozen design system + fonts
-- [ ] P0-T3 Route groups + middleware stub
-- [ ] P0-T4 ESLint + Prettier + strict TS + CI
+- [x] P0-T1 Scaffold Next.js 14 + TS (App Router)
+- [x] P0-T2 Wire frozen design system + fonts
+- [x] P0-T3 Route groups + middleware stub
+- [x] P0-T4 ESLint + Prettier + strict TS + CI
 
 ## Phase 1 — Component library
-- [ ] P1-T1 Component group A
-- [ ] P1-T2 Component group B
-- [ ] P1-T3 Component group C
-- [ ] P1-T4 Composite cards
+- [x] P1-T1 Component group A
+- [x] P1-T2 Component group B
+- [x] P1-T3 Component group C
+- [x] P1-T4 Composite cards
 
 ## Phase 2 — App shell & navigation
-- [ ] P2-T1 App shell + navigation
-- [ ] P2-T2 Fixtures + types
-- [ ] P2-T3 Toast provider
+- [x] P2-T1 App shell + navigation
+- [x] P2-T2 Fixtures + types
+- [x] P2-T3 Toast provider
 
 ## Phase 3 — Core screens (mock data)
-- [ ] P3-T1 Dashboard home (mock)
-- [ ] P3-T2 Opportunity Feed (mock)
-- [ ] P3-T3 Build modal flow
-- [ ] P3-T4 Portfolio (mock)
-- [ ] P3-T5 Agent Workspace (mock)
-- [ ] P3-T6 Builder screen (mock)
-- [ ] P3-T7 Research screen (mock)
-- [ ] P3-T8 Settings screen (mock)
-- [ ] P3-T9 Global search + notifications (mock)
+- [x] P3-T1 Dashboard home (mock)
+- [x] P3-T2 Opportunity Feed (mock)
+- [x] P3-T3 Build modal flow
+- [x] P3-T4 Portfolio (mock)
+- [x] P3-T5 Agent Workspace (mock)
+- [x] P3-T6 Builder screen (mock)
+- [x] P3-T7 Research screen (mock)
+- [x] P3-T8 Settings screen (mock)
+- [x] P3-T9 Global search + notifications (mock)
 
 ## Phase 4 — Auth
 - [ ] P4-T1 Supabase clients + env
@@ -63,3 +63,4 @@
 ## Verification log
 | Date | Task | Verdict | Notes |
 |---|---|---|---|
+| 2026-07-20 | P0–P3 (20 tasks) | ✅ verified | lint+typecheck+build green (11 routes); Playwright golden-path + login e2e pass; 8 screens screenshotted, zero page errors |
