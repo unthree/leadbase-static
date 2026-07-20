@@ -1,0 +1,3 @@
+/* App glue only — the design system lives in design-system/. */
+a { color: inherit; }
+button { font-family: inherit; }
