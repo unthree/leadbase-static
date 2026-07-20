@@ -1,0 +1,135 @@
+/* ==========================================================================
+   LeadbasePro Design System — tokens.css
+   FROZEN. Do not edit to fix a single screen. New tokens go below ADDITIONS.
+   Source of truth: canonical Leadbase Pro Dashboard mockup.
+   ========================================================================== */
+
+:root {
+  /* ----- Typography ----- */
+  --lb-font-display: "Instrument Serif", Georgia, serif;
+  --lb-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --lb-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --lb-fs-11: 0.6875rem;
+  --lb-fs-12: 0.75rem;
+  --lb-fs-13: 0.8125rem;
+  --lb-fs-14: 0.875rem;
+  --lb-fs-15: 0.9375rem;
+  --lb-fs-16: 1rem;
+  --lb-fs-18: 1.125rem;
+  --lb-fs-20: 1.25rem;
+  --lb-fs-24: 1.5rem;
+  --lb-fs-30: 1.875rem;
+  --lb-fs-38: 2.375rem;
+
+  /* ----- Brand & accents ----- */
+  --lb-brand: #2563ff;
+  --lb-brand-strong: #1d4fd7;
+  --lb-brand-soft: #e9efff;
+  --lb-accent-cyan: #00c2ff;
+  --lb-accent-violet: #7c3aed;
+  --lb-accent-magenta: #ff4db8;
+
+  /* ----- Semantic ----- */
+  --lb-success: #16a34a;
+  --lb-success-soft: #e5f7ec;
+  --lb-warning: #d97706;
+  --lb-warning-soft: #fdf1e0;
+  --lb-danger: #dc2626;
+  --lb-danger-soft: #fdeaea;
+  --lb-info: #0680b0;
+  --lb-info-soft: #e1f6ff;
+  --lb-violet-soft: #f1e9fe;
+  --lb-violet-ink: #6a25c9;
+  --lb-magenta-soft: #ffe6f4;
+  --lb-magenta-ink: #b81f7e;
+
+  /* ----- Surfaces (light) ----- */
+  --lb-surface-page: #f7f8fb;
+  --lb-surface-card: #ffffff;
+  --lb-surface-sunken: #f2f4f9;
+  --lb-surface-raised: #fbfcfe;
+  --lb-surface-brand-soft: var(--lb-brand-soft);
+
+  /* ----- Text (light) ----- */
+  --lb-text-primary: #10152b;
+  --lb-text-secondary: #565e7a;
+  --lb-text-tertiary: #8a91ab;
+  --lb-text-muted: #b3b9cd;
+  --lb-text-inverse: #ffffff;
+
+  /* ----- Borders ----- */
+  --lb-border-subtle: #eef0f6;
+  --lb-border-default: #e3e7f0;
+  --lb-border-strong: #c9cfdf;
+
+  /* ----- Gradients ----- */
+  --lb-grad-swarm: linear-gradient(120deg, #2563ff 0%, #00c2ff 52%, #7c3aed 100%);
+  --lb-grad-flow: linear-gradient(120deg, #00c2ff 0%, #2563ff 100%);
+  --lb-grad-pulse: linear-gradient(120deg, #7c3aed 0%, #ff4db8 100%);
+  --lb-grad-ring: conic-gradient(from 0deg, #2563ff, #00c2ff, #7c3aed, #ff4db8, #2563ff);
+  --lb-grad-dark-agent:
+    radial-gradient(46% 60% at 12% 14%, rgba(37, 99, 255, 0.22), transparent 70%),
+    radial-gradient(42% 54% at 88% 10%, rgba(124, 58, 237, 0.2), transparent 70%),
+    radial-gradient(50% 60% at 74% 96%, rgba(255, 77, 184, 0.13), transparent 72%),
+    #0c1020;
+
+  /* ----- Geometry ----- */
+  --lb-radius-sm: 8px;
+  --lb-radius-md: 12px;
+  --lb-radius-lg: 16px;
+  --lb-radius-xl: 22px;
+  --lb-radius-pill: 999px;
+
+  /* ----- Elevation ----- */
+  --lb-shadow-sm: 0 1px 2px rgba(16, 21, 43, 0.05);
+  --lb-shadow-md: 0 6px 20px -6px rgba(16, 21, 43, 0.12);
+  --lb-shadow-lg: 0 18px 50px -12px rgba(16, 21, 43, 0.22);
+
+  /* ----- Layout ----- */
+  --lb-sidebar-w: 264px;
+  --lb-topbar-h: 68px;
+
+  /* ----- Motion ----- */
+  --lb-ease: cubic-bezier(0.22, 0.8, 0.36, 1);
+  --lb-t-fast: 140ms;
+  --lb-t-med: 260ms;
+}
+
+/* ----- Dark theme (opt-in per container: data-theme="dark") ----- */
+[data-theme="dark"] {
+  --lb-surface-page: #0b0e1a;
+  --lb-surface-card: #121729;
+  --lb-surface-sunken: #0e1322;
+  --lb-surface-raised: #1a2036;
+  --lb-surface-brand-soft: rgba(37, 99, 255, 0.18);
+  --lb-brand-soft: rgba(37, 99, 255, 0.18);
+
+  --lb-text-primary: #f4f6ff;
+  --lb-text-secondary: #a7aecb;
+  --lb-text-tertiary: #6d7494;
+  --lb-text-muted: #4a5069;
+
+  --lb-border-subtle: rgba(255, 255, 255, 0.06);
+  --lb-border-default: rgba(255, 255, 255, 0.1);
+  --lb-border-strong: rgba(255, 255, 255, 0.2);
+
+  --lb-success: #4ade80;
+  --lb-success-soft: rgba(74, 222, 128, 0.14);
+  --lb-warning: #fbbf24;
+  --lb-warning-soft: rgba(251, 191, 36, 0.14);
+  --lb-danger: #f87171;
+  --lb-danger-soft: rgba(248, 113, 113, 0.14);
+  --lb-info: #6fd6ff;
+  --lb-info-soft: rgba(0, 194, 255, 0.14);
+  --lb-violet-soft: rgba(124, 58, 237, 0.2);
+  --lb-violet-ink: #c4a3f7;
+  --lb-magenta-soft: rgba(255, 77, 184, 0.16);
+  --lb-magenta-ink: #ff9ad4;
+
+  --lb-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --lb-shadow-md: 0 6px 20px -6px rgba(0, 0, 0, 0.5);
+  --lb-shadow-lg: 0 18px 50px -12px rgba(0, 0, 0, 0.65);
+}
+
+/* ===== ADDITIONS (new tokens go below this line; never modify above) ===== */

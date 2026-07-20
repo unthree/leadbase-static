@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LeadbasePro — Design System Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="tokens.css" />
+<link rel="stylesheet" href="components.css" />
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  /* Reference-page chrome only — not part of the design system */
+  .ref-section { max-width: 1180px; margin: 0 auto; padding: 40px 32px; }
+  .ref-h { font-family: var(--lb-font-mono); font-size: var(--lb-fs-12); letter-spacing: .14em; text-transform: uppercase; color: var(--lb-text-tertiary); border-bottom: 1px solid var(--lb-border-default); padding-bottom: 8px; margin: 0 0 22px; }
+  .ref-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+  .ref-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+  .ref-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+  .ref-grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
+</style>
+</head>
+<body class="lb-app">
+<div class="lb-grain"></div>
+<div style="position:relative;z-index:2">
+
+<!-- ===================== 00 · PRIMITIVES ===================== -->
+<section class="ref-section">
+  <h2 class="ref-h">00 · Buttons</h2>
+  <div class="ref-row">
+    <button class="lb-btn lb-btn--primary">Primary</button>
+    <button class="lb-btn lb-btn--secondary">Secondary</button>
+    <button class="lb-btn lb-btn--ghost">Ghost</button>
+    <button class="lb-btn lb-btn--quiet">Quiet</button>
+    <button class="lb-btn lb-btn--danger">Danger</button>
+    <button class="lb-btn lb-btn--success">Success</button>
+    <button class="lb-btn lb-btn--gradient"><i data-lucide="sparkles"></i> Gradient</button>
+    <button class="lb-btn lb-btn--gradient lb-btn--sm"><i data-lucide="sparkles"></i> Agent</button>
+    <button class="lb-btn lb-btn--secondary" disabled>Disabled</button>
+  </div>
+
+  <h2 class="ref-h">Badges · Status · Tags</h2>
+  <div class="ref-row">
+    <span class="lb-badge lb-badge--neutral">Neutral</span>
+    <span class="lb-badge lb-badge--brand">Brand</span>
+    <span class="lb-badge lb-badge--success"><i data-lucide="circle"></i> Live</span>
+    <span class="lb-badge lb-badge--warning">Medium</span>
+    <span class="lb-badge lb-badge--danger">High</span>
+    <span class="lb-badge lb-badge--info">Info</span>
+    <span class="lb-badge lb-badge--gradient">High intent</span>
+  </div>
+  <div class="ref-row">
+    <span class="lb-status lb-status--ok"><span class="lb-status__dot lb-pulse"></span> active</span>
+    <span class="lb-status lb-status--pending"><span class="lb-status__dot lb-pulse"></span> building</span>
+    <span class="lb-status lb-status--info"><span class="lb-status__dot"></span> testing</span>
+    <span class="lb-status lb-status--mute"><span class="lb-status__dot"></span> researching</span>
+    <span class="lb-status lb-status--bad"><span class="lb-status__dot"></span> failed</span>
+  </div>
+  <div class="ref-row">
+    <span class="lb-tag lb-tag--think">think</span>
+    <span class="lb-tag lb-tag--plan">plan</span>
+    <span class="lb-tag lb-tag--build">build</span>
+    <span class="lb-tag lb-tag--find">find</span>
+    <span class="lb-tag lb-tag--win">win</span>
+    <span class="lb-tag lb-tag--kill">kill</span>
+  </div>
+
+  <h2 class="ref-h">Score rings (71 / 78 / 92) · Avatars · Icon chips · Meters</h2>
+  <div class="ref-row" style="gap:22px">
+    <span class="lb-score lb-score--mid"><span class="lb-score__ring lb-score__ring--sm" style="--lb-score-val:71">71</span></span>
+    <span class="lb-score lb-score--mid"><span class="lb-score__ring lb-score__ring--md" style="--lb-score-val:78">78</span><span class="lb-score__label">Match</span></span>
+    <span class="lb-score lb-score--hi"><span class="lb-score__ring lb-score__ring--lg" style="--lb-score-val:92">92</span><span class="lb-score__label">Match</span></span>
+    <span class="lb-avatar lb-avatar--32">MO<span class="lb-avatar__status lb-avatar__status--online"></span></span>
+    <span class="lb-avatar lb-avatar--40">MO</span>
+    <span class="lb-icon-chip lb-icon-chip--brand"><i data-lucide="users"></i></span>
+    <span class="lb-icon-chip lb-icon-chip--sky"><i data-lucide="radar"></i></span>
+    <span class="lb-icon-chip lb-icon-chip--violet"><i data-lucide="hammer"></i></span>
+    <span class="lb-icon-chip lb-icon-chip--magenta"><i data-lucide="file-text"></i></span>
+    <span class="lb-icon-chip lb-icon-chip--gradient lb-icon-chip--lg"><i data-lucide="rocket"></i></span>
+  </div>
+  <div style="max-width:420px;display:flex;flex-direction:column;gap:10px">
+    <div class="lb-meter"><div class="lb-meter__fill" style="width:64%"></div></div>
+    <div class="lb-meter lb-meter--thin lb-meter--gradient"><div class="lb-meter__fill" style="width:40%"></div></div>
+    <div class="lb-meter lb-meter--thin lb-meter--success"><div class="lb-meter__fill" style="width:100%"></div></div>
+  </div>
+
+  <h2 class="ref-h" style="margin-top:28px">Tabs</h2>
+  <div class="ref-row">
+    <div class="lb-tabs">
+      <button class="lb-tabs__item is-active">All <span class="lb-tabs__count">4</span></button>
+      <button class="lb-tabs__item"><i data-lucide="cloud"></i> SaaS</button>
+      <button class="lb-tabs__item">Local</button>
+      <button class="lb-tabs__item">Content</button>
+      <button class="lb-tabs__item">Service</button>
+    </div>
+  </div>
+  <div class="ref-row">
+    <div class="lb-tabs lb-tabs--pill">
+      <button class="lb-tabs__item is-active">All</button>
+      <button class="lb-tabs__item">Researching</button>
+      <button class="lb-tabs__item">Building</button>
+      <button class="lb-tabs__item">Testing</button>
+      <button class="lb-tabs__item">Active</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 02 · DASHBOARD SCENE ===================== -->
+<section class="ref-section">
+  <h2 class="ref-h">02 · Dashboard — stat cards, opportunity rows, activity, actions</h2>
+  <div class="ref-grid-4" style="margin-bottom:18px">
+    <div class="lb-card lb-stat-card">
+      <div class="lb-stat-card__top"><span class="lb-stat-card__label">Opportunity score</span><span class="lb-icon-chip lb-icon-chip--brand"><i data-lucide="target"></i></span></div>
+      <div class="lb-stat-card__value">87</div>
+      <div class="lb-stat-card__meta"><span class="lb-delta lb-delta--up"><i data-lucide="trending-up"></i>+6</span> vs last week</div>
+    </div>
+    <div class="lb-card lb-stat-card">
+      <div class="lb-stat-card__top"><span class="lb-stat-card__label">Buyer leads ready</span><span class="lb-icon-chip lb-icon-chip--brand"><i data-lucide="users"></i></span></div>
+      <div class="lb-stat-card__value">1,284</div>
+      <div class="lb-stat-card__meta"><span class="lb-delta lb-delta--up"><i data-lucide="trending-up"></i>+12%</span> 42 new today</div>
+    </div>
+    <div class="lb-card lb-stat-card">
+      <div class="lb-stat-card__top"><span class="lb-stat-card__label">Micro-businesses live</span><span class="lb-icon-chip lb-icon-chip--brand"><i data-lucide="boxes"></i></span></div>
+      <div class="lb-stat-card__value">5</div>
+      <div class="lb-stat-card__meta"><span class="lb-delta lb-delta--up"><i data-lucide="trending-up"></i>+1</span> 2 in testing</div>
+    </div>
+    <div class="lb-card lb-stat-card">
+      <div class="lb-stat-card__top"><span class="lb-stat-card__label">Portfolio MRR path</span><span class="lb-icon-chip lb-icon-chip--brand"><i data-lucide="trending-up"></i></span></div>
+      <div class="lb-stat-card__value">$4.2k</div>
+      <div class="lb-stat-card__meta"><span class="lb-delta lb-delta--down"><i data-lucide="trending-down"></i>-3%</span> across 5 builds</div>
+    </div>
+  </div>
+
+  <div class="ref-grid-2">
+    <div class="lb-card">
+      <div class="lb-card__head">
+        <h2 class="lb-card__title">New opportunities found</h2>
+        <a class="lb-card__link">View all <i data-lucide="arrow-right"></i></a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--lb-border-subtle);border-radius:var(--lb-radius-md);cursor:pointer">
+          <span class="lb-score lb-score--hi"><span class="lb-score__ring lb-score__ring--sm" style="--lb-score-val:92">92</span></span>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:600;font-size:var(--lb-fs-15)">Onboarding teardown service for seed SaaS</div>
+            <div style="font-size:var(--lb-fs-12);color:var(--lb-text-secondary);margin-top:3px">Seed-stage SaaS founders · $1.5–3k per teardown</div>
+          </div>
+          <i data-lucide="chevron-right" style="color:var(--lb-text-muted)"></i>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--lb-border-subtle);border-radius:var(--lb-radius-md);cursor:pointer">
+          <span class="lb-score lb-score--mid"><span class="lb-score__ring lb-score__ring--sm" style="--lb-score-val:78">78</span></span>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:600;font-size:var(--lb-fs-15)">Local HVAC lead-gen microsite network</div>
+            <div style="font-size:var(--lb-fs-12);color:var(--lb-text-secondary);margin-top:3px">HVAC &amp; home-service owners · $800/mo per market</div>
+          </div>
+          <i data-lucide="chevron-right" style="color:var(--lb-text-muted)"></i>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="lb-card">
+        <div class="lb-card__head" style="margin-bottom:6px">
+          <div style="display:flex;align-items:center;gap:8px"><span class="lb-swarm lb-swarm--spin" style="width:22px;height:22px"></span><h2 class="lb-card__title lb-card__title--sm">Agent activity</h2></div>
+          <span class="lb-badge lb-badge--success"><i data-lucide="circle"></i> Live</span>
+        </div>
+        <div class="lb-activity">
+          <span class="lb-icon-chip lb-icon-chip--sky"><i data-lucide="radar"></i></span>
+          <div><div class="lb-activity__text">Scanned 1,204 funding announcements, kept 37 matching your ICP.</div><div class="lb-activity__time">09:12</div></div>
+        </div>
+        <div class="lb-activity">
+          <span class="lb-icon-chip lb-icon-chip--violet"><i data-lucide="hammer"></i></span>
+          <div><div class="lb-activity__text">Drafted the OnboardLoop landing page and booking flow.</div><div class="lb-activity__time">09:18</div></div>
+        </div>
+        <div class="lb-activity">
+          <span class="lb-icon-chip lb-icon-chip--brand"><i data-lucide="users"></i></span>
+          <div><div class="lb-activity__text">Found 25 seed founders shipping self-serve onboarding this month.</div><div class="lb-activity__time">09:24</div></div>
+        </div>
+      </div>
+      <div class="lb-card">
+        <h2 class="lb-card__title lb-card__title--sm" style="margin:0 0 12px">Suggested next actions</h2>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <button class="lb-action-row">
+            <span class="lb-icon-chip lb-icon-chip--brand"><i data-lucide="rocket"></i></span>
+            <div><div class="lb-action-row__title">Approve outreach batch for OnboardLoop</div><div class="lb-action-row__meta">25 leads ready</div></div>
+            <span class="lb-action-row__chevron"><i data-lucide="arrow-right"></i></span>
+          </button>
+          <button class="lb-action-row">
+            <span class="lb-icon-chip lb-icon-chip--brand"><i data-lucide="git-branch"></i></span>
+            <div><div class="lb-action-row__title">Clone CivicHVAC playbook to Austin &amp; Tampa</div><div class="lb-action-row__meta">Est. +$1.6k/mo</div></div>
+            <span class="lb-action-row__chevron"><i data-lucide="arrow-right"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 · OPPORTUNITY CARD ===================== -->
+<section class="ref-section">
+  <h2 class="ref-h">03 · Opportunity card (feed)</h2>
+  <div class="ref-grid-2">
+    <div class="lb-card">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:flex-start;gap:16px">
+          <span class="lb-score lb-score--hi"><span class="lb-score__ring lb-score__ring--md" style="--lb-score-val:92">92</span><span class="lb-score__label">Match</span></span>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:7px">
+              <span class="lb-badge lb-badge--neutral">SaaS</span>
+              <span class="lb-badge lb-badge--neutral">Productized</span>
+              <span class="lb-badge lb-badge--gradient">High intent</span>
+            </div>
+            <h3 style="font-family:var(--lb-font-display);font-weight:700;font-size:var(--lb-fs-20);letter-spacing:-.02em;margin:0;line-height:1.2">Onboarding teardown service for seed SaaS</h3>
+          </div>
+        </div>
+        <div class="lb-callout">
+          <span class="lb-icon-chip lb-icon-chip--violet lb-callout__icon"><i data-lucide="sparkles"></i></span>
+          <div><strong>Why you:</strong> Matches your saved interest in product onboarding and your 6 years in B2B SaaS.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px">
+          <div class="lb-meta"><span class="lb-meta__icon"><i data-lucide="user-round"></i></span><div><div class="lb-mono-label">Buyer type</div><div class="lb-meta__value">Seed-stage SaaS founders</div></div></div>
+          <div class="lb-meta"><span class="lb-meta__icon"><i data-lucide="radio"></i></span><div><div class="lb-mono-label">Market signal</div><div class="lb-meta__value">37 funding announcements this week in your ICP</div></div></div>
+          <div class="lb-meta"><span class="lb-meta__icon"><i data-lucide="gauge"></i></span><div><div class="lb-mono-label">Difficulty</div><div style="margin-top:4px"><span class="lb-badge lb-badge--success">Low</span></div></div></div>
+          <div class="lb-meta"><span class="lb-meta__icon"><i data-lucide="banknote"></i></span><div><div class="lb-mono-label">Revenue path</div><div class="lb-meta__value">$1.5–3k per teardown · retainer upsell</div></div></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:2px">
+          <button class="lb-btn lb-btn--gradient"><i data-lucide="hammer"></i> Build micro-business</button>
+          <button class="lb-btn lb-btn--ghost"><i data-lucide="bookmark"></i> Save to portfolio</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== 04 · PORTFOLIO CARD ===================== -->
+    <div>
+      <h2 class="ref-h" style="border:0;padding:0">04 · Portfolio card</h2>
+      <div class="lb-card lb-card--flush lb-card--hover" style="max-width:380px">
+        <div class="lb-card__stripe lb-card__stripe--swarm"></div>
+        <div style="padding:18px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <h3 style="font-family:var(--lb-font-display);font-weight:700;font-size:var(--lb-fs-18);letter-spacing:-.02em;margin:0">OnboardLoop</h3>
+            <span class="lb-status lb-status--pending"><span class="lb-status__dot lb-pulse"></span> building</span>
+          </div>
+          <div style="display:flex;gap:22px">
+            <div><div class="lb-mono-label">Revenue</div><div style="font-family:var(--lb-font-mono);font-weight:600;font-size:var(--lb-fs-16);margin-top:3px">$0 → $3k/mo</div></div>
+            <div><div class="lb-mono-label">Buyer leads</div><div style="font-family:var(--lb-font-mono);font-weight:600;font-size:var(--lb-fs-16);margin-top:3px">18</div></div>
+          </div>
+          <div style="font-size:var(--lb-fs-14);color:var(--lb-text-secondary);line-height:1.45">Landing live; first 25 DMs queued.</div>
+          <div class="lb-callout" style="padding:11px 12px">
+            <span class="lb-callout__icon" style="color:var(--lb-accent-violet)"><i data-lucide="sparkles" style="width:1rem;height:1rem"></i></span>
+            <div style="font-size:var(--lb-fs-12)"><strong style="display:block">Agent suggests</strong>Approve outreach batch #1</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="lb-btn lb-btn--secondary lb-btn--sm lb-btn--full">Open</button>
+            <button class="lb-btn lb-btn--ghost lb-btn--sm"><i data-lucide="check"></i> Approve move</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 05 · AGENT (DARK) ===================== -->
+<section class="ref-section" data-theme="dark" style="background:var(--lb-grad-dark-agent);border-radius:var(--lb-radius-xl);color:var(--lb-text-primary)">
+  <h2 class="ref-h">05 · Agent workspace (dark) — chat + workbench</h2>
+  <div class="ref-grid-2">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="lb-msg lb-msg--user">
+        <span class="lb-avatar lb-avatar--32 lb-msg__avatar">MO</span>
+        <div class="lb-msg__bubble">Build the onboarding-teardown opportunity into a real micro-business and start finding buyers.</div>
+      </div>
+      <div class="lb-msg lb-msg--agent">
+        <span class="lb-swarm" style="width:32px;height:32px;flex:none"></span>
+        <div class="lb-msg__bubble">On it. I scoped <strong>OnboardLoop</strong> — teardowns for seed SaaS founders. Building the landing page, drafting 25 personalized DMs, and generating the "Activation Leak" lead magnet.</div>
+      </div>
+      <div class="lb-msg lb-msg--agent lb-msg--thinking">
+        <span class="lb-swarm lb-swarm--spin" style="width:32px;height:32px;flex:none"></span>
+        <div class="lb-msg__bubble"><i data-lucide="loader"></i> Rewriting outreach in a warmer tone…</div>
+      </div>
+      <div class="lb-composer">
+        <input placeholder="Ask your agent to build, research, or launch…" />
+        <button class="lb-btn lb-btn--gradient lb-btn--sm">Send <i data-lucide="arrow-up"></i></button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="lb-card">
+        <div class="lb-card__head" style="margin-bottom:6px"><h2 class="lb-card__title lb-card__title--sm">Tasks running</h2><span class="lb-badge lb-badge--brand">2 active</span></div>
+        <div style="padding:11px 0">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <div style="display:flex;align-items:center;gap:10px"><span class="lb-icon-chip lb-icon-chip--sm lb-icon-chip--brand"><i data-lucide="send"></i></span><span style="font-size:var(--lb-fs-14);font-weight:500">Personalize 25 outreach DMs</span></div>
+            <span class="lb-badge lb-badge--brand"><i data-lucide="loader" class="lb-spin"></i> Running</span>
+          </div>
+          <div class="lb-meter lb-meter--thin lb-meter--gradient"><div class="lb-meter__fill" style="width:64%"></div></div>
+        </div>
+        <div style="padding:11px 0">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;align-items:center;gap:10px"><span class="lb-icon-chip lb-icon-chip--sm lb-icon-chip--violet"><i data-lucide="list-checks"></i></span><span style="font-size:var(--lb-fs-14);font-weight:500">Draft follow-up sequence</span></div>
+            <span class="lb-badge lb-badge--neutral">Queued</span>
+          </div>
+        </div>
+        <div style="padding:11px 0">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;align-items:center;gap:10px"><span class="lb-icon-chip lb-icon-chip--sm lb-icon-chip--magenta"><i data-lucide="magnet"></i></span><span style="font-size:var(--lb-fs-14);font-weight:500">Build activation-leak checklist</span></div>
+            <span class="lb-badge lb-badge--success">Done</span>
+          </div>
+        </div>
+      </div>
+      <div class="ref-grid-2" style="gap:12px">
+        <div class="lb-card" style="text-align:center"><div style="font-family:var(--lb-font-display);font-weight:700;font-size:var(--lb-fs-30)">1,204</div><div style="font-size:var(--lb-fs-12);color:var(--lb-text-secondary)">Sources researched</div></div>
+        <div class="lb-card" style="text-align:center"><div style="font-family:var(--lb-font-display);font-weight:700;font-size:var(--lb-fs-30)">25</div><div style="font-size:var(--lb-fs-12);color:var(--lb-text-secondary)">Leads found</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 06 · MODAL + TOASTS (static) ===================== -->
+<section class="ref-section">
+  <h2 class="ref-h">06 · Build modal (static) · Toasts</h2>
+  <div class="ref-grid-2" style="align-items:start">
+    <div class="lb-modal" style="max-width:480px">
+      <div class="lb-modal__header">
+        <span class="lb-icon-chip lb-icon-chip--lg lb-icon-chip--gradient"><i data-lucide="hammer"></i></span>
+        <div>
+          <h3 class="lb-modal__title">Build this micro-business?</h3>
+          <p class="lb-modal__subtitle">Your agent will spin up the landing page, lead magnet, and first outreach batch.</p>
+        </div>
+      </div>
+      <div class="lb-modal__body">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--lb-radius-md);background:var(--lb-surface-sunken);margin-bottom:14px">
+          <span class="lb-score lb-score--hi"><span class="lb-score__ring lb-score__ring--sm" style="--lb-score-val:92">92</span></span>
+          <div><div style="font-weight:600;font-size:var(--lb-fs-15)">Onboarding teardown service for seed SaaS</div><div style="font-size:var(--lb-fs-12);color:var(--lb-text-secondary);margin-top:2px">Seed-stage SaaS founders</div></div>
+        </div>
+        <div class="lb-mono-label" style="margin-bottom:8px">What your agent will do</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:var(--lb-fs-14)"><i data-lucide="check-circle-2" style="width:1.05rem;height:1.05rem;color:var(--lb-success)"></i> Generate landing page + booking flow</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:var(--lb-fs-14)"><i data-lucide="check-circle-2" style="width:1.05rem;height:1.05rem;color:var(--lb-success)"></i> Draft 25 personalized outreach DMs</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:var(--lb-fs-14)"><i data-lucide="check-circle-2" style="width:1.05rem;height:1.05rem;color:var(--lb-success)"></i> Set up activation-leak lead magnet</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:var(--lb-fs-14)"><i data-lucide="check-circle-2" style="width:1.05rem;height:1.05rem;color:var(--lb-success)"></i> Schedule follow-up sub-agent</div>
+        </div>
+      </div>
+      <div class="lb-modal__footer">
+        <button class="lb-btn lb-btn--ghost">Not now</button>
+        <button class="lb-btn lb-btn--gradient"><i data-lucide="rocket"></i> Build it</button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:340px">
+      <div class="lb-toast lb-toast--success">
+        <span class="lb-toast__icon"><i data-lucide="check-circle-2"></i></span>
+        <div><div class="lb-toast__title">Saved to portfolio</div><div class="lb-toast__msg">Onboarding teardown service — Researching.</div></div>
+        <button class="lb-toast__close"><i data-lucide="x"></i></button>
+      </div>
+      <div class="lb-toast lb-toast--info">
+        <span class="lb-toast__icon"><i data-lucide="sparkles"></i></span>
+        <div><div class="lb-toast__title">Agent is building</div><div class="lb-toast__msg">OnboardLoop — spinning up landing page + outreach.</div></div>
+        <button class="lb-toast__close"><i data-lucide="x"></i></button>
+      </div>
+      <div class="lb-toast lb-toast--warn">
+        <span class="lb-toast__icon"><i data-lucide="alert-triangle"></i></span>
+        <div><div class="lb-toast__title">Plan limit reached</div><div class="lb-toast__msg">Solo allows 1 active build. Upgrade to build more.</div></div>
+        <button class="lb-toast__close"><i data-lucide="x"></i></button>
+      </div>
+      <div class="lb-toast lb-toast--danger">
+        <span class="lb-toast__icon"><i data-lucide="x-circle"></i></span>
+        <div><div class="lb-toast__title">Couldn't save</div><div class="lb-toast__msg">Network error — nothing was changed. Retry.</div></div>
+        <button class="lb-toast__close"><i data-lucide="x"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 01 · LOGIN (dark hero snippet) ===================== -->
+<section class="ref-section">
+  <h2 class="ref-h">01 · Login — split layout</h2>
+  <div style="display:grid;grid-template-columns:1.05fr 1fr;border-radius:var(--lb-radius-xl);overflow:hidden;border:1px solid var(--lb-border-default);min-height:460px">
+    <div data-theme="dark" style="position:relative;background:var(--lb-grad-dark-agent);padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;color:var(--lb-text-primary)">
+      <div class="lb-sidebar__wordmark" style="display:block">Leadbase<b>Pro</b></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:20px">
+        <span class="lb-swarm lb-swarm--spin" style="width:96px;height:96px"></span>
+        <h1 style="font-family:var(--lb-font-display);font-weight:700;font-size:var(--lb-fs-38);line-height:1.05;letter-spacing:-.03em;margin:0;max-width:420px">Build micro-businesses from your <span class="lb-gradient-text">interests</span>.</h1>
+        <p style="color:var(--lb-text-secondary);font-size:var(--lb-fs-15);line-height:1.55;max-width:400px;margin:0">LeadbasePro turns your goals, research, activity, and saved ideas into buyer-lead opportunities — and ships them while you sleep.</p>
+      </div>
+      <div class="lb-kicker">Discover more. Close more.</div>
+    </div>
+    <div style="display:grid;place-items:center;padding:32px;background:var(--lb-surface-card)">
+      <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:18px">
+        <div>
+          <div class="lb-kicker">Private beta · 2026</div>
+          <h2 style="font-family:var(--lb-font-display);font-weight:700;font-size:var(--lb-fs-30);letter-spacing:-.025em;margin:8px 0 6px">Welcome back</h2>
+          <p style="color:var(--lb-text-secondary);font-size:var(--lb-fs-14);margin:0">Log in to your operator workspace.</p>
+        </div>
+        <button class="lb-btn lb-btn--secondary lb-btn--full">Continue with Google</button>
+        <div style="display:flex;align-items:center;gap:12px"><div style="flex:1;height:1px;background:var(--lb-border-default)"></div><span style="font-size:var(--lb-fs-12);color:var(--lb-text-tertiary)">or</span><div style="flex:1;height:1px;background:var(--lb-border-default)"></div></div>
+        <div class="lb-field">
+          <label class="lb-field__label">Work email</label>
+          <div class="lb-field__control"><i data-lucide="mail"></i><input type="email" placeholder="you@company.com" /></div>
+        </div>
+        <div class="lb-field">
+          <label class="lb-field__label">Password</label>
+          <div class="lb-field__control"><i data-lucide="lock"></i><input type="password" placeholder="••••••••" /></div>
+        </div>
+        <button class="lb-btn lb-btn--gradient lb-btn--full">Enter workspace <i data-lucide="arrow-right"></i></button>
+        <p style="font-size:var(--lb-fs-12);color:var(--lb-text-tertiary);text-align:center;margin:0;display:flex;align-items:center;justify-content:center;gap:6px"><i data-lucide="shield-check" style="width:.9rem;height:.9rem"></i> Your domain, list, and content stay owned by you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EMPTY + SKELETON ===================== -->
+<section class="ref-section">
+  <h2 class="ref-h">Empty state · Skeleton</h2>
+  <div class="ref-grid-2">
+    <div class="lb-card lb-empty">
+      <span class="lb-icon-chip lb-icon-chip--lg lb-icon-chip--brand"><i data-lucide="radar"></i></span>
+      <div class="lb-empty__title">Your agent hasn't found opportunities yet</div>
+      <div class="lb-empty__hint">Connect your interests in Settings, or run a manual rescan to sweep fresh market data now.</div>
+      <button class="lb-btn lb-btn--gradient lb-btn--sm"><i data-lucide="refresh-cw"></i> Rescan</button>
+    </div>
+    <div class="lb-card" style="display:flex;flex-direction:column;gap:12px">
+      <div class="lb-skeleton" style="height:20px;width:55%"></div>
+      <div class="lb-skeleton" style="height:14px;width:90%"></div>
+      <div class="lb-skeleton" style="height:14px;width:80%"></div>
+      <div class="lb-skeleton" style="height:120px"></div>
+    </div>
+  </div>
+</section>
+
+</div>
+<script>lucide.createIcons();</script>
+</body>
+</html>
