@@ -1,0 +1,42 @@
+Title,Description,Labels,Priority,Estimate
+P0-T1 Scaffold Next.js 14 + TS (App Router),"See task P0-T1 in LEADBASEPRO_BUILD_PLAN.md. DoD: npm run dev serves a styled page; npm run build passes.",phase-0;frontend,High,2
+P0-T2 Wire frozen design system + fonts,"See task P0-T2 in LEADBASEPRO_BUILD_PLAN.md. DoD: a page using lb-btn--gradient + lb-card renders identically to examples.html.",phase-0;design-system,High,2
+P0-T3 Route groups + middleware stub,"See task P0-T3 in LEADBASEPRO_BUILD_PLAN.md. DoD: /dashboard and /login render placeholders.",phase-0;frontend,High,1
+P0-T4 ESLint + Prettier + strict TS + CI,"See task P0-T4 in LEADBASEPRO_BUILD_PLAN.md. DoD: lint, typecheck, build pass on scaffold.",phase-0;frontend,Medium,1
+P1-T1 Component group A,"See task P1-T1 in LEADBASEPRO_BUILD_PLAN.md. Button, Card, Badge, StatusPill, IconChip, Tag, Avatar, Meter. DoD: kitchen-sink matches examples.html.",phase-1;design-system;frontend,High,3
+P1-T2 Component group B,"See task P1-T2 in LEADBASEPRO_BUILD_PLAN.md. StatCard, ScoreBadge, SearchBar, Tabs, Topbar, SidebarNav. DoD: ScoreBadge ring matches 71/78/92.",phase-1;design-system;frontend,High,3
+P1-T3 Component group C,"See task P1-T3 in LEADBASEPRO_BUILD_PLAN.md. Modal, Toast, ToastStack, ChatMessage, Composer, ActivityRow, ActionRow, Callout, MetaItem. DoD: modal + toast behavior.",phase-1;design-system;frontend,High,3
+P1-T4 Composite cards,"See task P1-T4 in LEADBASEPRO_BUILD_PLAN.md. OpportunityCard, PortfolioCard. DoD: pixel-match feed/portfolio scenes.",phase-1;frontend,High,2
+P2-T1 App shell + navigation,"See task P2-T1 in LEADBASEPRO_BUILD_PLAN.md. lb-shell + SidebarNav + Topbar, active route, responsive < 1080px.",phase-2;frontend,High,2
+P2-T2 Fixtures + types,"See task P2-T2 in LEADBASEPRO_BUILD_PLAN.md. lib/fixtures + lib/types mirror the canonical .dc.html data.",phase-2;frontend,High,2
+P2-T3 Toast provider,"See task P2-T3 in LEADBASEPRO_BUILD_PLAN.md. ToastProvider context + useToast(); stack top-right; 4.4s auto-dismiss per SPEC 3.10.",phase-2;frontend,Medium,1
+P3-T1 Dashboard home (mock),"See task P3-T1 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.2. DoD: matches scene 02; View all -> /feed.",phase-3;frontend,High,3
+P3-T2 Opportunity Feed (mock),"See task P3-T2 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.3. DoD: matches scene 03; tab filter; save toast; build modal.",phase-3;frontend,High,3
+P3-T3 Build modal flow,"See task P3-T3 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.6. DoD: matches scene 06; new card in Building.",phase-3;frontend,High,2
+P3-T4 Portfolio (mock),"See task P3-T4 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.4. DoD: matches scene 04; status filter.",phase-3;frontend,High,3
+P3-T5 Agent Workspace (mock),"See task P3-T5 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.5 + 6.1. DoD: matches scene 05; meters tick; chat append; mock timings per SPEC 6.1.",phase-3;frontend,High,3
+P3-T6 Builder screen (mock),"See task P3-T6 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.7. Pipeline stepper, assets list, leads table, batch approval CTA. DoD: routes from Portfolio Open; all 4 UI states; existing lb-* only.",phase-3;frontend,High,3
+P3-T7 Research screen (mock),"See task P3-T7 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.8. Signals + Sources tabs, filter/search, restore archived opportunity. DoD: both tabs render fixtures; restore returns opp to feed as new.",phase-3;frontend,Medium,2
+P3-T8 Settings screen (mock),"See task P3-T8 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.9. Profile, interests chips, agent controls, plan & usage, data & privacy. DoD: pause flips workspace header; wipe dialog requires typed name.",phase-3;frontend,High,3
+P3-T9 Global search + notifications (mock),"See task P3-T9 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.10. Topbar search dropdown + bell dropdown with unread dot and pinned approvals. DoD: search filters fixtures live; notification click routes + marks read.",phase-3;frontend,Medium,2
+P4-T1 Supabase clients + env,"See task P4-T1 in LEADBASEPRO_BUILD_PLAN.md. DoD: client/server/middleware supabase instances.",phase-4;backend,High,2
+P4-T2 Login page + auth,"See task P4-T2 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.1 + 2.1. DoD: Google + email login -> /dashboard; session persists; first login creates profile with Operator trial.",phase-4;backend;frontend,High,3
+P4-T3 Auth middleware/route protection,"See task P4-T3 in LEADBASEPRO_BUILD_PLAN.md and SPEC 2.1. DoD: (app) protected; redirects both ways.",phase-4;backend,High,2
+P4-T4 Real user in sidebar/topbar,"See task P4-T4 in LEADBASEPRO_BUILD_PLAN.md. DoD: name/avatar/plan from profile.",phase-4;frontend,Medium,1
+P5-T1 DB migrations + RLS + types,"See task P5-T1 in LEADBASEPRO_BUILD_PLAN.md (Section 8 schema). DoD: tables + RLS; cross-user reads denied.",phase-5;backend,High,3
+P5-T2 Screens read live data,"See task P5-T2 in LEADBASEPRO_BUILD_PLAN.md. DoD: dashboard/feed/portfolio read rows; lb-empty states.",phase-5;backend;frontend,High,3
+P5-T3 Mutations + optimistic UI,"See task P5-T3 in LEADBASEPRO_BUILD_PLAN.md and SPEC Section 5 contract table. DoD: save/build/approve persist; RLS-scoped.",phase-5;backend;frontend,High,3
+P5-T4 Realtime activity feed,"See task P5-T4 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.2/3.5. DoD: inserted row appears in UI within ~1s.",phase-5;backend;frontend,High,2
+P5-T5 Stripe checkout + plan gating,"See task P5-T5 in LEADBASEPRO_BUILD_PLAN.md and SPEC 2.2 entitlements. DoD: test checkout upgrades plan; webhook verified; Solo build-limit guard works.",phase-5;billing;backend,Medium,3
+P5-T6 Builder/Research/Settings live data,"See task P5-T6 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.7-3.9. Assets CRUD + publish confirm, leads realtime, interests persist, agent pause/approval-mode persist. DoD: all three views read/write Supabase; pause halts runs.",phase-5;backend;frontend,High,3
+P5-T7 Data & privacy actions,"See task P5-T7 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.9.5. Export-all (signed URL), wipe business (typed confirm, cascade), delete account. DoD: export downloads; wipe cascades; RLS-scoped.",phase-5;backend,High,2
+P6-T1 Agent run model + queue,"See task P6-T1 in LEADBASEPRO_BUILD_PLAN.md and SPEC 6.2. DoD: run state machine writes agent_tasks.",phase-6;agent;backend,High,3
+P6-T2 Agent tooling layer,"See task P6-T2 in LEADBASEPRO_BUILD_PLAN.md and SPEC 6.2. DoD: one tool runs end-to-end, persists an asset; outreach gate enforced server-side.",phase-6;agent;backend,High,3
+P6-T3 Opportunity discovery loop,"See task P6-T3 in LEADBASEPRO_BUILD_PLAN.md and SPEC 4.1/4.4. DoD: scheduled run yields real opportunity rows with match scores.",phase-6;agent;backend,High,3
+P6-T4 Real agent chat (LLM + tools + stream),"See task P6-T4 in LEADBASEPRO_BUILD_PLAN.md and SPEC 3.5/6.2. DoD: chat triggers a run; approval messages pause outward-facing steps; workbench live.",phase-6;agent;backend;frontend,High,3
+P6-T5 Nightly runs + morning brief,"See task P6-T5 in LEADBASEPRO_BUILD_PLAN.md and SPEC 4.4. DoD: overnight job populates next-day dashboard summary line.",phase-6;agent;backend,Medium,2
+P7-T1 Playwright golden-path e2e,"See task P7-T1 in LEADBASEPRO_BUILD_PLAN.md. DoD: login->feed->build->portfolio->builder->agent green in CI; cross-user RLS test.",phase-7;frontend,High,2
+P7-T2 Accessibility pass,"See task P7-T2 in LEADBASEPRO_BUILD_PLAN.md and SPEC Section 7. DoD: axe clean; reduced-motion honored; modal focus trap.",phase-7;frontend,Medium,2
+P7-T3 Skeletons + error/empty states,"See task P7-T3 in LEADBASEPRO_BUILD_PLAN.md and SPEC Section 3 (4-state rule). DoD: lb-skeleton everywhere; error boundaries.",phase-7;frontend,Medium,2
+P7-T4 Performance + Lighthouse >= 90,"See task P7-T4 in LEADBASEPRO_BUILD_PLAN.md and SPEC Section 7. DoD: report attached to PR.",phase-7;frontend,Medium,2
+P7-T5 Deploy to Vercel + Supabase prod,"See task P7-T5 in LEADBASEPRO_BUILD_PLAN.md. DoD: live URL behind auth; rollback notes.",phase-7;backend,High,2
