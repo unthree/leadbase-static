@@ -13,3 +13,5 @@ next-env.d.ts
 screenshot.mjs
 shots2.mjs
 debug*.mjs
+supabase/.branches
+supabase/.temp

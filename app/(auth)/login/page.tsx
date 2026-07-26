@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Lock, Mail, ShieldCheck } from "lucide-react";
+import { Lock, Mail, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui";
 import { SwarmMark } from "@/components/chat";
+import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,14 +14,42 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
 
-  const submit = () => {
+  // Real Supabase auth when configured; otherwise a local demo login that
+  // drops straight into the mock workspace (Phases 1–3).
+  const google = async () => {
+    const supabase = createClient();
+    if (!supabase) {
+      router.push("/dashboard");
+      return;
+    }
+    setError("");
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/auth/callback` },
+    });
+  };
+
+  const submit = async () => {
     if (password.length < 8) {
       setError("Password must be at least 8 characters");
       return;
     }
     setError("");
     setPending(true);
-    setTimeout(() => router.push("/dashboard"), 600);
+
+    const supabase = createClient();
+    if (!supabase) {
+      setTimeout(() => router.push("/dashboard"), 600);
+      return;
+    }
+    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+    if (signInError) {
+      setError(signInError.message);
+      setPending(false);
+      return;
+    }
+    router.push("/dashboard");
+    router.refresh();
   };
 
   return (
@@ -49,7 +78,7 @@ export default function LoginPage() {
             <p style={{ color: "var(--lb-text-secondary)", fontSize: "var(--lb-fs-14)", margin: 0 }}>Log in to your operator workspace.</p>
           </div>
 
-          <Button variant="secondary" full onClick={() => router.push("/dashboard")}>Continue with Google</Button>
+          <Button variant="secondary" full onClick={google}>Continue with Google</Button>
 
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ flex: 1, height: 1, background: "var(--lb-border-default)" }} />

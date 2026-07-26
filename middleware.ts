@@ -1,11 +1,22 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { updateSession } from "@/lib/supabase/middleware";
 
-// Phase 4 (P4-T3) replaces this stub with the Supabase auth gate.
-export function middleware(_request: NextRequest) {
-  return NextResponse.next();
+// Delegates to the Supabase session handler, which refreshes the session and
+// enforces the auth gate — or passes through untouched when Supabase isn't
+// configured (mock mode).
+export async function middleware(request: NextRequest) {
+  return updateSession(request);
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/feed/:path*", "/portfolio/:path*", "/agent/:path*", "/builder/:path*", "/research/:path*", "/settings/:path*"],
+  matcher: [
+    "/dashboard/:path*",
+    "/feed/:path*",
+    "/portfolio/:path*",
+    "/agent/:path*",
+    "/builder/:path*",
+    "/research/:path*",
+    "/settings/:path*",
+    "/login",
+  ],
 };

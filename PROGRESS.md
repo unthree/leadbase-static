@@ -32,13 +32,13 @@
 - [x] P3-T9 Global search + notifications (mock)
 
 ## Phase 4 — Auth
-- [ ] P4-T1 Supabase clients + env
-- [ ] P4-T2 Login page + auth
-- [ ] P4-T3 Auth middleware/route protection
+- [~] P4-T1 Supabase clients + env
+- [~] P4-T2 Login page + auth
+- [~] P4-T3 Auth middleware/route protection
 - [ ] P4-T4 Real user in sidebar/topbar
 
 ## Phase 5 — Data + persistence + billing
-- [ ] P5-T1 DB migrations + RLS + types
+- [~] P5-T1 DB migrations + RLS + types
 - [ ] P5-T2 Screens read live data
 - [ ] P5-T3 Mutations + optimistic UI
 - [ ] P5-T4 Realtime activity feed
@@ -65,3 +65,4 @@
 |---|---|---|---|
 | 2026-07-20 | P0–P3 (20 tasks) | ✅ verified | lint+typecheck+build green (11 routes); Playwright golden-path + login e2e pass; 8 screens screenshotted, zero page errors |
 | 2026-07-20 | code-review fixes | ✅ | tickTasks completes at 100% (SPEC 6.1); useTaskTicker respects agent pause; e2e green post-fix |
+| 2026-07-20 | P4 (auth) + P5-T1 (schema) | 🟡 staged | Supabase client/server/middleware + OAuth callback + signout; login & middleware env-gated (mock still 200s, e2e green); 0001_init.sql schema+RLS+triggers+realtime. Needs your Supabase project to verify live — see SUPABASE_SETUP.md |
